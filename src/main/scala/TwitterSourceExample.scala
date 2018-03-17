@@ -19,6 +19,7 @@ object TwitterSourceExample {
       sys.exit(1)
     }
 
+
     val Array(consumerKey, consumerSecret, accessToken, accessTokenSecret) = args.take(4)
 
     // create a Spark session
@@ -27,6 +28,17 @@ object TwitterSourceExample {
       .appName("TwitterStructuredStreaming")
       .master("local[*]")
       .getOrCreate()
+
+    println("Spark version: " + spark.version)
+
+    val stopWordsRDD = spark.sparkContext.textFile("src/main/resources/stop-words.txt")
+    val posWordsRDD = spark.sparkContext.textFile("src/main/resources/pos-words.txt")
+    val negWordsRDD = spark.sparkContext.textFile("src/main/resources/neg-words.txt")
+
+    val positiveWords = posWordsRDD.collect().toSet
+    val negativeWords = negWordsRDD.collect().toSet
+    val stopWords = stopWordsRDD.collect().toSet
+
 
     val tweetDF = spark.readStream
                        .format(providerClassName)
@@ -42,7 +54,7 @@ object TwitterSourceExample {
 
     Thread.sleep(1000 * 35)
 
-    tweetQS.stop();
+    tweetQS.awaitTermination()
 
   }
 }
