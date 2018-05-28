@@ -50,11 +50,10 @@ object TwitterSourceExample {
 
     tweetDF.printSchema()
 
-    val tweetQS = tweetDF.writeStream.format("console").start()
+    val tweetQS = tweetDF.writeStream.format("console").option("truncate", false).start()
 
     Thread.sleep(1000 * 35)
 
     tweetQS.awaitTermination()
-
   }
 }

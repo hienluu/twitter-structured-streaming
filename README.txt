@@ -1,17 +1,10 @@
 #
-chmod +x submit.sh
-chmod +x sbt/sbt
+chmod +x sbt/sbt (only if necessary)
 
-# package
+# package - this may take a while in order to download all the dependencies
 ./sbt/sbt assembly
 
 # to generate Eclipse project
 ./sbt/sbt eclipse
 
-
-# ========= If you would like to run Twitter Streaming application from command ====
-
-# update env.sh with path to Spark home directory and Twitter application keys
-
-# to submit your streaming app. 
-./submit 
+# at this point you can import into Scala IDE
