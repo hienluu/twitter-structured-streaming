@@ -18,5 +18,7 @@ Once IntelliJ is installed
 <code>
 TwitterSourceExample
 org.structured_streaming_sources.twitter.TwitterStreamingSource
-Usage: <consumer key>, <consumer secret> <access token> <access token secret>
+Usage: &lt;consumer key&gt;, &lt;consumer secret&gt; &lt;access token&gt; &lt;access token secret&gt;
 </code> 
+
+##### This requires a Twitter developer account. You can create one at this <a href="https://developer.twitter.com/en/apply-for-access">link</a>.
