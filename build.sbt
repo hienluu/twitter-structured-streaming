@@ -1,10 +1,11 @@
-name := "twitter-structured-streaming"
+lazy val root = (project in file("."))
+	.settings(
+		name := "twitter-structured-streaming",
+    version := "1.0",
+    organization := "org.twitter-structured-streaming",
+    scalaVersion := "2.11.12",
 
-version := "1.0"
-
-organization := "org.twitter-structured-streaming"
-
-scalaVersion := "2.11.8"
+	)
 
 val sparkVersion = "2.4.3"
 
